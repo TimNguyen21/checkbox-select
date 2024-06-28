@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import CheckboxSelectOption from "./components/checkbox-select-option/CheckboxSelectOption";
 import './CheckboxSelect.scss'
 
+import searchIcon from '../../images/search-icon.png'
+
 function CheckboxSelect(props) {
     const { label, placeholder, optionsData, resetToDefault } = props;
 
@@ -59,7 +61,7 @@ function CheckboxSelect(props) {
         <section className={'checkbox-select'}>
             <label className={'checkbox-select__label'}>{label}</label>
             <section className={'checkbox-select__input-container'}>
-                <span className={'checkbox-select__input-search-icon'}>searchIcon</span>
+                <img className={'checkbox-select__input-search-icon'} src={searchIcon} alt={'search icon'}/>
                 <input className={'checkbox-select__input'}
                        type={'text'}
                        placeholder={placeholder}

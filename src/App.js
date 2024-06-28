@@ -6,7 +6,8 @@ function App() {
   return (
     <div className="App">
       <CheckboxSelect name={'States Selections'}
-                      placeholder={'Search For States'}
+                      label={'States'}
+                      placeholder={'Search For State'}
                       optionsData={statesData} />
     </div>
   );

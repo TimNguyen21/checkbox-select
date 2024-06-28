@@ -1,11 +1,10 @@
-import React from "react";
+import './CheckboxSelectOption.scss';
 
 function CheckboxSelectOption(props) {
-    const { id, name, isChecked, isHidden, updateOptionCheckedStatus, updateFilterSelectionChangeCount } = props;
+    const { id, name, isChecked, isHidden, updateOptionCheckedStatus } = props;
 
     function updateFilterSelections(e) {
         updateOptionCheckedStatus(id, e.target.checked);
-        // updateFilterSelectionChangeCount(prevFilterSelectionChangeCount => prevFilterSelectionChangeCount +1);
     }
 
     return (

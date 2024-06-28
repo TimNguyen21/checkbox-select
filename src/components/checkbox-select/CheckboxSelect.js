@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import CheckboxSelectOption from "./components/checkbox-select-option/CheckboxSelectOption";
 import './CheckboxSelect.scss'
 
 import searchIcon from '../../images/search-icon.png'
 
 function CheckboxSelect(props) {
-    const { label, placeholder, optionsData, resetToDefault } = props;
+    const { label, placeholder, optionsData } = props;
+    const searchInput = useRef(null);
 
     const [currentOptionsData, setCurrentOptionsData] = useState(formatOptionsData(optionsData));
 
@@ -42,20 +43,16 @@ function CheckboxSelect(props) {
         })
     }
 
-    // function resetToDefaultOptions() {
-    //     let defaultOptionsData = formatOptionsData(currentOptionsData);
-    //     inputSearchNameElement.current.value = '';
+    function resetToDefaultOptions() {
+        let defaultOptionsData = formatOptionsData(currentOptionsData);
+        searchInput.current.value = '';
 
-    //     setCurrentOptionsData(defaultOptionsData);
-    // }
+        setCurrentOptionsData(defaultOptionsData);
+    }
 
     function updateFilterSelections(e) {
         updateOptionsDataWithTextSearch(e.target.value);
     }
-
-    // useEffect(() => {
-    //     resetToDefaultOptions();
-    // },[resetToDefault]);
 
     return (
         <section className={'checkbox-select'}>
@@ -65,11 +62,15 @@ function CheckboxSelect(props) {
                 <input className={'checkbox-select__input'}
                        type={'text'}
                        placeholder={placeholder}
+                       ref={searchInput}
                        onChange={(e) => {updateFilterSelections(e)}}
                 />
             </section>
             <section className={'checkbox-select__options'}>
                 {renderCheckboxSelectOptions()}
+            </section>
+            <section className={'checkbox-select__buttons'}>
+                <input className={'checkbox-select__button-reset'} type='button' value={'Reset'} onClick={() => {resetToDefaultOptions()}}/>
             </section>
         </section>
     );

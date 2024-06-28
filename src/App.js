@@ -1,9 +1,13 @@
+import CheckboxSelect from './components/checkbox-select/CheckboxSelect';
+import { statesData } from './data/statesData';
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      hello world
+      <CheckboxSelect name={'States Selections'}
+                      placeholder={'Search For States'}
+                      optionsData={statesData} />
     </div>
   );
 }
